@@ -4,10 +4,27 @@
   box-sizing: border-box;
 }
 
+:root {
+
+  /* Dark Theme */
+  --color-gradient-start: hsl(192, 100%, 67%);
+  --color-gradient-end: hsl(280, 87%, 65%);
+  --color-very-dark-blue: hsl(235, 21%, 11%);
+  --color-very-dark-desaturated-blue: hsl(235, 24%, 19%);
+  --color-dark-light-grayish-blue: hsl(234, 39%, 85%);
+  --color-dark-light-grayish-blue-hover: hsl(236, 33%, 92%);
+  --color-dark-dark-grayish-blue: hsl(234, 11%, 52%);
+  --color-dark-very-dark-grayish-blue: hsl(233, 14%, 35%);
+  --color-dark-very-dark-grayish-blue-hover: hsl(237, 14%, 26%);
+}
+
 body {
   width: 100%;
   height: 100vh;
-  background-color: rgb(50,54,57);
+  background-image: url(./bg-desktop-dark.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: var(--color-very-dark-blue);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -23,9 +40,9 @@ button {
   width: 400px;
   height: 700px;
   padding: 10px 25px;
-  background: #18181B;
-  border-radius: 10px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.45), 0 4px 8px rgba(0, 0, 0, 0.35), 0 8px 12px rgba(0, 0, 0, 0.15);
+  background-color: #25273c;
+  border-radius: 1rem;
+  box-shadow: -1px 5px 20px 10px rgba(37, 39, 60, 0.2);
   font-family: "Montserrat";
 }
 .container h2.title {
@@ -226,7 +243,11 @@ button {
   background: #fff;
 }
 .settings .setting input:checked + label:before {
-  background: #5d68e2;
+  background-image: linear-gradient(
+    to bottom right,
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
   transition: all 150ms cubic-bezier(0, 0, 0, 0.1);
 }
 .settings .setting input:checked + label:after {
@@ -254,7 +275,7 @@ button {
   border-radius: 8px;
   color: #fff;
   border: none;
-  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--color-gradient-end);
   letter-spacing: 1px;
   font-weight: bold;
   text-transform: uppercase;
@@ -299,6 +320,19 @@ a:hover {
   animation: octocat-wave 0.56s;
 }
 
+.footer {
+  color: #fff;
+  margin: 10vh 0 0 0;
+  font-size: 15px;
+  
+}
+
+.footer > a {
+  color: var(--color-gradient-end);
+  margin: 10vh 0 0 0;
+  font-size: 15px;
+}
+
 @keyframes octocat-wave {
   0%, 100% {
     transform: rotate(0);
@@ -309,6 +343,20 @@ a:hover {
   40%, 80% {
     transform: rotate(10deg);
   }
+}
+
+@media screen and (max-width: 1200px) {
+  .container h2.title {
+    font-size: 2.5rem;
+  }
+  .container {
+      font-size: 1.5rem;
+      width: 700px;
+      height: 1500px;
+      margin-left:10px;
+  }
+
+  
 }
 
 /*# sourceMappingURL=index.css.map */
