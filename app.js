@@ -141,6 +141,8 @@ copyBtn.addEventListener("click", () => {
 	copiedInfo.style.opacity = "0.75";
 });
 
+generateBtn.addEventListener("touchstart", () => {});
+
 // When Generate is clicked Password id generated.
 generateBtn.addEventListener("click", () => {
 	const length = +lengthEl.value;

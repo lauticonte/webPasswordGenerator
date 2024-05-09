@@ -8,8 +8,8 @@
 
   /* Dark Theme */
   --color-gradient-start: hsl(192, 100%, 67%);
-  --color-gradient-end: hsl(280, 87%, 65%);
-  --color-very-dark-blue: hsl(235, 21%, 11%);
+  --color-gradient-end: #624AD9;
+  --color-very-dark-blue: #0B111E;
   --color-very-dark-desaturated-blue: hsl(235, 24%, 19%);
   --color-dark-light-grayish-blue: hsl(234, 39%, 85%);
   --color-dark-light-grayish-blue-hover: hsl(236, 33%, 92%);
@@ -18,16 +18,24 @@
   --color-dark-very-dark-grayish-blue-hover: hsl(237, 14%, 26%);
 }
 
+.background{
+  position: absolute;
+  height: 40vh;
+  z-index: -1;
+  width: 100%;
+  background-color: #624AD9;
+  border-end-end-radius: 70% 50%;
+  top: 0;
+}
+
 body {
   width: 100%;
   height: 100vh;
-  background-image: url(./bg-desktop-dark.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
   background-color: var(--color-very-dark-blue);
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 button {
@@ -40,10 +48,10 @@ button {
   width: 400px;
   height: 700px;
   padding: 10px 25px;
-  background-color: #25273c;
+  background-color: #151C28;
   border-radius: 1rem;
   box-shadow: -1px 5px 20px 10px rgba(37, 39, 60, 0.2);
-  font-family: "Montserrat";
+  font-family: "Noto Sans";
 }
 .container h2.title {
   font-size: 1.45rem;
@@ -159,6 +167,7 @@ button {
 
 #slider {
   -webkit-appearance: none;
+  appearance: none;
   width: calc(100% - (70px));
   height: 2px;
   border-radius: 5px;
@@ -276,14 +285,17 @@ button {
   color: #fff;
   border: none;
   background: var(--color-gradient-end);
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   font-weight: bold;
   text-transform: uppercase;
   cursor: pointer;
   transition: all 150ms ease;
+  font-family: 'Noto Sans';
+  font-size: 1.2rem;
 }
+
 .btn.generate:active {
-  transform: translateY(-3%);
+  transform: translateY(-3%) scale(0.95);
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.08);
 }
 
@@ -306,6 +318,11 @@ a:hover {
   color: #222;
 }
 
+a:visited{
+  color: #fff;
+  text-decoration: none;
+}
+
 .github-corner svg {
   position: absolute;
   right: 0;
@@ -322,8 +339,9 @@ a:hover {
 
 .footer {
   color: #fff;
-  margin: 10vh 0 0 0;
+  margin: 80px 0 0 0;
   font-size: 15px;
+  text-align: center;
   
 }
 
@@ -331,6 +349,7 @@ a:hover {
   color: var(--color-gradient-end);
   margin: 10vh 0 0 0;
   font-size: 15px;
+  text-decoration: none;
 }
 
 @keyframes octocat-wave {
@@ -346,17 +365,202 @@ a:hover {
 }
 
 @media screen and (max-width: 1200px) {
+
+  .background{
+    position: absolute;
+    height: 40vh;
+    z-index: -1;
+    width: 100%;
+    background-color: #624AD9;
+    border-end-end-radius: 70% 50%;
+  }
+
   .container h2.title {
     font-size: 2.5rem;
   }
+
+  body{
+    overflow: hidden;
+    width: 100%;
+    align-items: baseline;
+    max-height: fit-content;
+    background-image: none;
+
+  }
   .container {
       font-size: 1.5rem;
-      width: 700px;
-      height: 1500px;
-      margin-left:10px;
+      width: 90%;
+      height: 75vh;
+      margin-bottom: 0;
+      border-radius: 2rem;
   }
 
+  .container h2.title {
+    font-size: 3rem;
+    margin: 20px;
+    color: #fff;
+    text-align: center;
+  }
+
+  .result{
+    font-size: 3.5rem;
+    height: 200px;
+    position: relative;
+  }
+
+  .result__viewbox{
+    font-size: 3rem;
+    line-height: 200px;
+  }
+
+  .range__slider {
+    height: 150px;
+    margin: 60px 0;
+
+  }
+  .range__slider::before, .range__slider::after {
+    position: absolute;
+    color: #fff;
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  .range__slider::before {
+    
+    left: 35px;
+  }
+  .range__slider::after {
+    
+    right: 25px;
+  }
+  
+  #slider {
+
+    width: calc(100% - (200px));
+    height: 20px;
+    border-radius: 20px;
+
+  }
+
+  #slider::-webkit-slider-thumb {
+
+    width: 40px;
+    height: 40px;
+
+  }
+
+  .field-title {
+    
+    position: absolute;
+    top: -20px;
+    left: 8px;
+    transform: translateY(-50%);
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    pointer-events: none;
+    user-select: none;
+    margin-right: 10px;
+  }
+
+
+  .range__slider .length__title::after {
+    content: attr(data-length);
+    position: absolute;
+    right: -30px;
+    font-variant-numeric: tabular-nums;
+    color: #fff;
+  }
+  
+
+  .settings {
+    position: relative;
+    height: auto;
+    widows: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .settings .setting {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 10px 25px;
+    color: #fff;
+    margin-bottom: 8px;
+    font-size: 2rem;
+  }
+
+  .settings .setting input + label::before {
+    margin-right: 30px;
+    height: 60px;
+    width: 110px;
+    border-radius: 30px;
+    background: rgba(214, 214, 214, 0.434);
+  }
+  .settings .setting input + label::after {
+    margin-right: 30px;
+    height: 54px;
+    width: 54px;
+    border-radius: 60px;
+    right: 74px;
+    background: #fff;
+  }
+
+  .btn.generate {
+    font-size: 3rem;
+    user-select: none;
+    position: relative;
+    width: 100%;
+    height: 150px;
+    margin: 10px 0;
+    margin-top: 80px;
+    border-radius: 2rem;
+    color: #fff;
+    border: none;
+    background: var(--color-gradient-end);
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 150ms ease;
+    font-family: 'Noto Sans';
+  }
+
+  .footer {
+    color: #fff;
+    margin: 80px 0 0 0;
+    font-size: 15px;
+    
+  }
+  
+  .footer > a {
+    color: var(--color-gradient-end);
+    margin: 10px 0 0 0;
+    font-size: 15px;
+  }
+
+  .result__info {
+    position: absolute;
+    bottom: 4px;
+    color: #fff;
+    font-size: 1.5rem;
+    transition: all 150ms ease-in-out;
+    transform: translateY(200%);
+    opacity: 0;
+  }
+
+  .result #copy-btn {
+    font-size: 1.5rem;
+    width: 80px;
+    height: 80px;
+
+  }
   
 }
 
 /*# sourceMappingURL=index.css.map */
+
